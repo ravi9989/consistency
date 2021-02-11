@@ -1,5 +1,5 @@
 # consistency
-how to maintain consistency of data when there are multiple writers in the same db
+how to maintain consistency of data when there are multiple writers in the same db/memory/record
 
 Now the problem is there are two events E1, E2 where they are trying to write data at t1, t2 time respectively. But due to some network issues the event E1 failed to write data into memory, now at t2 the event E2 writes data to memory successfully. after some time E1 get released from issue and writes the data into memory.
 so we can clearly see a problem that most recent write event is overidden by old event, How to solve this when we are using multiple systems to write on same memory, how can we achieve consistency?
