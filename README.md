@@ -14,6 +14,7 @@ this is how we can solve this small consistency problem by versioning
 
 ```python
 COUNTER = 1
+
 def update_record(index, record):
 
     memory[index] = record
@@ -36,12 +37,15 @@ def centralised_counter():
     
 # on arrival of new event 
 current_event["version"] = centralised_counter()
+
 index = current_event["index"] # on address where the current event is trying to write
+
 if not memory[index]:
   
   memory[index] = current_event
   
   exit
+
 if check_most_recent(memory[index], current_event):
 
     update_record(index, current_event)
